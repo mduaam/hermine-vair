@@ -354,7 +354,7 @@ export async function getAdminReviewsList(status?: string) {
   try {
     const supabase = createAdminClient();
     let query = supabase
-      .from('reviews')
+      .from('product_reviews')
       .select('*, product:products(name_fr, name_en, slug)')
       .order('created_at', { ascending: false });
 

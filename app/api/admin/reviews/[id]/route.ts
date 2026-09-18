@@ -12,7 +12,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
     // Fetch before state for audit
     const { data: beforeReview } = await adminClient
-      .from('reviews')
+      .from('product_reviews')
       .select('*')
       .eq('id', id)
       .maybeSingle();
@@ -29,7 +29,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
         if (is_featured !== undefined) updatePayload.is_featured = is_featured;
 
         const { data: updated, error } = await adminClient
-          .from('reviews')
+          .from('product_reviews')
           .update(updatePayload)
           .eq('id', id)
           .select()
