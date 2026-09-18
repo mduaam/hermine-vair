@@ -48,7 +48,13 @@ export async function generateMetadata({ params }: SubCategoryPageProps): Promis
   return {
     title,
     description,
-    alternates: generateAlternates(`/collections/${categorySlug}/${subCategorySlug}`, locale),
+    alternates: generateAlternates(
+      {
+        fr: `/collections/${category.slug}/${subCategory.slug}`,
+        en: `/collections/${category.slug_en || category.slug}/${subCategory.slug_en || subCategory.slug}`,
+      },
+      locale
+    ),
   };
 }
 
@@ -77,12 +83,14 @@ export default async function SubCategoryPage({ params, searchParams }: SubCateg
 
   const parentName = isEn ? category.name_en : category.name_fr;
   const subName = isEn ? subCategory.name_en : subCategory.name_fr;
+  const parentCategorySlug = isEn && category.slug_en ? category.slug_en : category.slug;
+  const currentSubCategorySlug = isEn && subCategory.slug_en ? subCategory.slug_en : subCategory.slug;
 
   const breadcrumbs = [
     { label: isEn ? 'Home' : 'Accueil', href: `/${locale}` },
     { label: isEn ? 'Collections' : 'Collections', href: `/${locale}/collections` },
-    { label: parentName, href: `/${locale}/collections/${category.slug}` },
-    { label: subName, href: `/${locale}/collections/${category.slug}/${subCategory.slug}` },
+    { label: parentName, href: `/${locale}/collections/${parentCategorySlug}` },
+    { label: subName, href: `/${locale}/collections/${parentCategorySlug}/${currentSubCategorySlug}` },
   ];
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(breadcrumbs);
@@ -91,7 +99,7 @@ export default async function SubCategoryPage({ params, searchParams }: SubCateg
     description: isEn
       ? `Explore our collection of ${subName.toLowerCase()} by L'Hermine et le Vair.`
       : `Explorez notre collection de ${subName.toLowerCase()} par la Maison L'Hermine et le Vair.`,
-    url: `/${locale}/collections/${category.slug}/${subCategory.slug}`,
+    url: `/${locale}/collections/${parentCategorySlug}/${currentSubCategorySlug}`,
   });
 
   return (

@@ -33,7 +33,7 @@ export function MobileBottomNav({
   return (
     <nav
       aria-label="Navigation Mobile Inférieure"
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-ivory/95 backdrop-blur-md border-t border-charcoal/15 h-16 px-4 flex items-center justify-around shadow-lg"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-ivory/95 backdrop-blur-md border-t border-charcoal/15 h-16 px-4 flex items-center justify-around shadow-lg w-full max-w-full overflow-hidden"
     >
       {/* Home */}
       <Link

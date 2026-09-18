@@ -40,7 +40,7 @@ export function CartDrawer({ locale = 'fr' }: CartDrawerProps) {
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-ivory text-black shadow-2xl flex flex-col justify-between border-l border-charcoal/20 animate-slide-in-right">
+        <div className="w-full max-w-md bg-ivory text-black shadow-2xl flex flex-col justify-between border-l border-charcoal/20 animate-slide-in-right">
           
           {/* Header */}
           <div className="px-6 py-5 border-b border-charcoal/15 flex items-center justify-between bg-ivory">

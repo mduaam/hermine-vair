@@ -63,11 +63,11 @@ export default function StorefrontLayout({ children, params: { locale } }: RootL
   const activeLocale = locale as 'fr' | 'en';
 
   return (
-    <html lang={locale} className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-ivory text-black font-sans antialiased flex flex-col selection:bg-gold selection:text-black">
+    <html lang={locale} className={`${playfair.variable} ${inter.variable} w-full max-w-full overflow-x-clip`}>
+      <body className="min-h-screen bg-ivory text-black font-sans antialiased flex flex-col selection:bg-gold selection:text-black w-full max-w-full overflow-x-clip">
         <CartProvider>
           <Header locale={activeLocale} />
-          <div className="flex-1 flex flex-col pb-16 md:pb-0">
+          <div className="flex-1 flex flex-col pb-16 md:pb-0 w-full min-w-0 max-w-full overflow-x-clip">
             {children}
           </div>
           <Footer locale={activeLocale} />

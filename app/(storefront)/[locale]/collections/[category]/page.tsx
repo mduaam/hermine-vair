@@ -41,11 +41,19 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const description = isEn
     ? `Explore our collection of luxury ${name.toLowerCase()} handcrafted by French master furriers in Paris.`
     : `Explorez notre collection d'exception de ${name.toLowerCase()} façonnée à la main par nos maîtres artisans parisiens.`;
+  const frSlug = category.slug;
+  const enSlug = category.slug_en || category.slug;
 
   return {
     title,
     description,
-    alternates: generateAlternates(`/collections/${categorySlug}`, locale),
+    alternates: generateAlternates(
+      {
+        fr: `/collections/${frSlug}`,
+        en: `/collections/${enSlug}`,
+      },
+      locale
+    ),
   };
 }
 
@@ -71,10 +79,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const products = await getProducts(filters);
 
   const categoryName = isEn ? category.name_en : category.name_fr;
+  const currentCategorySlug = isEn && category.slug_en ? category.slug_en : category.slug;
   const breadcrumbs = [
     { label: isEn ? 'Home' : 'Accueil', href: `/${locale}` },
     { label: isEn ? 'Collections' : 'Collections', href: `/${locale}/collections` },
-    { label: categoryName, href: `/${locale}/collections/${category.slug}` },
+    { label: categoryName, href: `/${locale}/collections/${currentCategorySlug}` },
   ];
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(breadcrumbs);
@@ -83,7 +92,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     description: isEn
       ? `Discover the ${categoryName} collection by L'Hermine et le Vair.`
       : `Découvrez la collection ${categoryName} de la Maison L'Hermine et le Vair.`,
-    url: `/${locale}/collections/${category.slug}`,
+    url: `/${locale}/collections/${currentCategorySlug}`,
   });
 
   return (
@@ -104,33 +113,34 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             <Breadcrumbs items={breadcrumbs} />
           </div>
 
-          {/* Category Editorial Header */}
-          <div className="max-w-3xl mb-8 space-y-3">
+          {/* Category Header */}
+          <div className="max-w-3xl mb-10 space-y-3">
             <p className="text-xs uppercase tracking-[0.25em] text-gold font-medium">
-              {isEn ? 'High Fur Collection' : 'Haute Fourrure & Atelier'}
+              {isEn ? 'High Fur & Haute Couture' : 'Haute Fourrure & Haute Couture'}
             </p>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-black font-normal leading-tight">
               {categoryName}
             </h1>
-            <p className="text-xs md:text-sm text-charcoal leading-relaxed font-light">
+            <p className="text-sm text-charcoal leading-relaxed font-light">
               {isEn
-                ? `Discover each creation in our ${categoryName.toLowerCase()} collection. Designed to drape with timeless grandeur and hand-finished with silk and horn accents.`
-                : `Découvrez l’ensemble des créations de notre ligne ${categoryName.toLowerCase()}. Une coupe irréprochable au tombé magistral, sublimée par des doublures en pure soie.`}
+                ? `Explore our signature selection of ${categoryName.toLowerCase()} handcrafted in Paris using ethically sourced materials.`
+                : `Découvrez notre sélection signature de ${categoryName.toLowerCase()}, confectionnée à la main dans notre atelier parisien.`}
             </p>
           </div>
 
-          {/* Subcategory Navigation Chips */}
+          {/* Sub-categories Pills (if any) */}
           {subCategories.length > 0 && (
-            <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6">
+            <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
               <span className="text-xs uppercase tracking-wider text-charcoal font-medium mr-2 shrink-0">
                 {isEn ? 'Sub-collections:' : 'Sous-lignes :'}
               </span>
               {subCategories.map((sub) => {
                 const subName = isEn ? sub.name_en : sub.name_fr;
+                const subSlug = isEn && sub.slug_en ? sub.slug_en : sub.slug;
                 return (
                   <Link
                     key={sub.id}
-                    href={`/${locale}/collections/${category.slug}/${sub.slug}`}
+                    href={`/${locale}/collections/${currentCategorySlug}/${subSlug}`}
                     className="shrink-0 px-4 py-1.5 border border-charcoal/20 bg-ivory/60 hover:bg-black hover:text-ivory text-xs uppercase tracking-wider text-black transition-colors"
                   >
                     {subName}
@@ -148,8 +158,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-16">
               {products.map((prod) => {
                 const subCat = subCategories.find((s) => s.id === prod.category_id);
-                const subSlug = subCat?.slug || 'manteaux-de-fourrure';
-                const productHref = `/${locale}/collections/${category.slug}/${subSlug}/${prod.slug}`;
+                const subSlug = (isEn && subCat?.slug_en ? subCat.slug_en : subCat?.slug) || currentCategorySlug;
+                const prodSlug = isEn && prod.slug_en ? prod.slug_en : prod.slug;
+                const productHref = `/${locale}/collections/${currentCategorySlug}/${subSlug}/${prodSlug}`;
 
                 const formattedPrice = new Intl.NumberFormat(isEn ? 'en-US' : 'fr-FR', {
                   style: 'currency',

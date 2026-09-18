@@ -9,8 +9,8 @@ export function Footer({ locale }: FooterProps) {
   const isFr = locale === 'fr';
 
   return (
-    <footer className="bg-black text-ivory pt-16 pb-24 md:pb-16 border-t border-charcoal/30">
-      <div className="max-w-site mx-auto px-6 md:px-10 lg:px-16">
+    <footer className="bg-black text-ivory pt-16 pb-24 md:pb-16 border-t border-charcoal/30 w-full max-w-full overflow-x-clip">
+      <div className="max-w-site mx-auto px-4 sm:px-6 md:px-10 lg:px-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-ivory/10">
           {/* Col 1: Brand & Heritage */}
           <div className="lg:col-span-2 space-y-4">
@@ -39,34 +39,34 @@ export function Footer({ locale }: FooterProps) {
             <ul className="space-y-2.5 text-xs text-ivory/80">
               <li>
                 <Link
-                  href={`/${locale}/collections/manteaux`}
+                  href={`/${locale}/collections/${isFr ? 'manteau-fourrure-femme' : 'womens-fur-coat'}`}
                   className="hover:text-gold transition-colors"
                 >
-                  {isFr ? 'Manteaux de Fourrure' : 'Fur Coats'}
+                  {isFr ? 'Manteau Fourrure Femme' : "Women's Fur Coat"}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${locale}/collections/gilets`}
+                  href={`/${locale}/collections/${isFr ? 'veste-fourrure-femme' : 'womens-fur-jacket'}`}
                   className="hover:text-gold transition-colors"
                 >
-                  {isFr ? 'Gilets & Vestes' : 'Vests & Jackets'}
+                  {isFr ? 'Veste Fourrure Femme' : "Women's Fur Jacket"}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${locale}/collections/capes`}
+                  href={`/${locale}/collections/${isFr ? 'cape-fourrure-femme' : 'womens-fur-cape'}`}
                   className="hover:text-gold transition-colors"
                 >
-                  {isFr ? 'Capes & Étoles' : 'Capes & Stoles'}
+                  {isFr ? 'Cape Fourrure Femme' : "Women's Fur Cape"}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/${locale}/collections/accessoires`}
+                  href={`/${locale}/collections/${isFr ? 'chapka-fourrure-femme' : 'womens-fur-chapka'}`}
                   className="hover:text-gold transition-colors"
                 >
-                  {isFr ? 'Accessoires Rares' : 'Accessories'}
+                  {isFr ? 'Chapka Fourrure Femme' : "Women's Fur Chapka"}
                 </Link>
               </li>
               <li>
@@ -74,7 +74,7 @@ export function Footer({ locale }: FooterProps) {
                   href={`/${locale}/collections`}
                   className="hover:text-gold transition-colors"
                 >
-                  {isFr ? 'Toutes les créations' : 'All Creations'}
+                  {isFr ? 'Toutes les collections' : 'All Collections'}
                 </Link>
               </li>
             </ul>

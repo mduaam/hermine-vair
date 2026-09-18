@@ -22,7 +22,9 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
   const heroSlides: HeroSlide[] = [
     {
       imageUrl:
-        'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=2000&q=85',
+        'https://zahudflqsbloggswvudz.supabase.co/storage/v1/object/public/product-images/hero-homepage/hero-desktop.png',
+      imageMobileUrl:
+        'https://zahudflqsbloggswvudz.supabase.co/storage/v1/object/public/product-images/hero-homepage/hero-mobile.png',
       imageAlt: isFr
         ? 'Manteau long en vison naturel dans un salon parisien d’exception'
         : 'Long natural mink coat in an exceptional Parisian private salon',
@@ -56,17 +58,17 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
       imageUrl:
         'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2000&q=85',
       imageAlt: isFr
-        ? 'Cape drapée en cachemire double face et col chinchilla'
-        : 'Draped double-face cashmere cape with chinchilla collar',
-      eyebrowLabel: isFr ? 'Série Limitée' : 'Limited Editions',
+        ? 'Cape en pur cachemire double-face et col chinchilla'
+        : 'Pure double-face cashmere cape with chinchilla trim',
+      eyebrowLabel: isFr ? 'Maison Fondée à Paris' : 'Parisian Heritage House',
       heading: isFr
-        ? 'Le Raffinement dans le Moindre Détail'
-        : 'Refinement in Every Detail',
+        ? 'Douceur Impériale & Finitions Rares'
+        : 'Imperial Softness & Rare Accents',
       subheading: isFr
-        ? 'Chaque pièce est une œuvre unique numérotée, issue d’élevages certifiés aux normes éthiques les plus strictes.'
-        : 'Each creation is an individually numbered piece sourced from certified ateliers adhering to the strictest ethical standards.',
-      ctaLabel: isFr ? 'Explorer la Maison' : 'Discover The Maison',
-      ctaHref: `/${locale}/maison`,
+        ? 'Des pièces d’apparat douces comme une seconde peau, alliant le cachemire le plus soyeux aux fourrures certifiées Furmark®.'
+        : 'Statement pieces as gentle as a second skin, uniting the softest cashmere with Furmark® certified luxury pelts.',
+      ctaLabel: isFr ? 'Découvrir les Capes' : 'Discover The Capes',
+      ctaHref: `/${locale}/collections/${isFr ? 'cape-fourrure-femme' : 'womens-fur-cape'}`,
     },
   ];
 
@@ -75,30 +77,30 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
     {
       imageUrl:
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80',
-      imageAlt: isFr ? 'Manteaux de Fourrure' : 'Fur Coats',
-      label: isFr ? 'Manteaux de Fourrure' : 'Fur Coats',
-      href: `/${locale}/collections/manteaux`,
+      imageAlt: isFr ? 'Manteau Fourrure Femme' : "Women's Fur Coat",
+      label: isFr ? 'Manteau Fourrure Femme' : "Women's Fur Coat",
+      href: `/${locale}/collections/${isFr ? 'manteau-fourrure-femme' : 'womens-fur-coat'}`,
     },
     {
       imageUrl:
         'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=80',
-      imageAlt: isFr ? 'Gilets & Vestes' : 'Vests & Jackets',
-      label: isFr ? 'Gilets & Vestes' : 'Vests & Jackets',
-      href: `/${locale}/collections/gilets`,
+      imageAlt: isFr ? 'Veste Fourrure Femme' : "Women's Fur Jacket",
+      label: isFr ? 'Veste Fourrure Femme' : "Women's Fur Jacket",
+      href: `/${locale}/collections/${isFr ? 'veste-fourrure-femme' : 'womens-fur-jacket'}`,
     },
     {
       imageUrl:
         'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
-      imageAlt: isFr ? 'Capes & Étoles' : 'Capes & Stoles',
-      label: isFr ? 'Capes & Étoles' : 'Capes & Stoles',
-      href: `/${locale}/collections/capes`,
+      imageAlt: isFr ? 'Cape Fourrure Femme' : "Women's Fur Cape",
+      label: isFr ? 'Cape Fourrure Femme' : "Women's Fur Cape",
+      href: `/${locale}/collections/${isFr ? 'cape-fourrure-femme' : 'womens-fur-cape'}`,
     },
     {
       imageUrl:
         'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80',
-      imageAlt: isFr ? 'Accessoires d’Exception' : 'Rare Accessories',
-      label: isFr ? 'Accessoires d’Exception' : 'Rare Accessories',
-      href: `/${locale}/collections/accessoires`,
+      imageAlt: isFr ? 'Chapka Fourrure Femme' : "Women's Fur Chapka",
+      label: isFr ? 'Chapka Fourrure Femme' : "Women's Fur Chapka",
+      href: `/${locale}/collections/${isFr ? 'chapka-fourrure-femme' : 'womens-fur-chapka'}`,
     },
   ];
 
@@ -208,7 +210,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
 
       <main id="main-content" className="flex-1">
         {/* 1. Hero Carousel */}
-        <HeroCarousel slides={heroSlides} />
+        <HeroCarousel slides={heroSlides} autoPlayMs={6000} />
 
         {/* 2. Key Features Trust Row (from approved mockup §8) */}
         <section
