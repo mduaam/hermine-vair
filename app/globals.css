@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-ivory: #F3EFE8;
+    --color-taupe: #A38268;
+    --color-charcoal: #4A4642;
+    --color-black: #1C1917;
+    --color-gold: #C89B5C;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-black);
+    font-family: var(--font-sans), Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+  }
+}

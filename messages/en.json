@@ -1,0 +1,41 @@
+{
+  "site": {
+    "title": "L'Hermine et le Vair | Fine Fur & Exceptional Ready-to-Wear",
+    "description": "Luxury boutique for fine fur and exceptional clothing. French craftsmanship, noble materials and timeless silhouettes.",
+    "brandName": "L'Hermine et le Vair",
+    "tagline": "Maison of Fine Fur & Rare Creations"
+  },
+  "nav": {
+    "collections": "Collections",
+    "coats": "Coats",
+    "gilets": "Vests & Jackets",
+    "capes": "Capes & Stoles",
+    "accessories": "Accessories",
+    "maison": "The Maison",
+    "journal": "The Journal",
+    "search": "Search",
+    "account": "Account",
+    "wishlist": "Wishlist",
+    "cart": "Bag"
+  },
+  "home": {
+    "heroEyebrow": "Exceptional Furs",
+    "heroTitle": "Pure Elegance, Atelier Craftsmanship",
+    "heroSubtitle": "Discover our collection of coats, vests, and bespoke creations tailored in the world's finest and rarest materials.",
+    "ctaExplore": "Discover the Collection",
+    "ctaLookbook": "Explore the Lookbook"
+  },
+  "trust": {
+    "responsive": "Bespoke Design",
+    "responsiveDesc": "Seamless, intuitive experience across all devices",
+    "secure": "High-Security Checkout",
+    "secureDesc": "PCI-DSS certified encryption, Stripe & 3D Secure",
+    "craftsmanship": "Artisanal Heritage & Sourcing",
+    "craftsmanshipDesc": "Rigorous selection and traceability of the noblest materials",
+    "service": "Private Concierge Care",
+    "serviceDesc": "Secured signature delivery and complimentary returns"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

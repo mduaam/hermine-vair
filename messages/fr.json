@@ -1,0 +1,41 @@
+{
+  "site": {
+    "title": "L'Hermine et le Vair | Maison de Haute Fourrure & Prêt-à-Porter d'Exception",
+    "description": "Boutique de haute fourrure et pièces d'exception. Artisanat français, matières nobles et silhouettes intemporelles.",
+    "brandName": "L'Hermine et le Vair",
+    "tagline": "Maison de Haute Fourrure & Pièces Rares"
+  },
+  "nav": {
+    "collections": "Collections",
+    "coats": "Manteaux",
+    "gilets": "Gilets & Vestes",
+    "capes": "Capes & Étoles",
+    "accessories": "Accessoires",
+    "maison": "La Maison",
+    "journal": "Le Journal",
+    "search": "Recherche",
+    "account": "Compte",
+    "wishlist": "Favoris",
+    "cart": "Panier"
+  },
+  "home": {
+    "heroEyebrow": "Fourrures d'Exception",
+    "heroTitle": "L'Élégance Pure, le Savoir-Faire d'Atelier",
+    "heroSubtitle": "Découvrez notre collection de manteaux, gilets et pièces d'exception façonnés dans les matières les plus rares.",
+    "ctaExplore": "Découvrir la Collection",
+    "ctaLookbook": "Explorer le Lookbook"
+  },
+  "trust": {
+    "responsive": "Conception Sur Mesure",
+    "responsiveDesc": "Expérience fluide et intuitive sur tous vos appareils",
+    "secure": "Paiement Hautement Sécurisé",
+    "secureDesc": "Chiffrement bancaire PCI-DSS, Stripe & 3D Secure",
+    "craftsmanship": "Artisanat d'Art & Éthique",
+    "craftsmanshipDesc": "Sélection rigoureuse et traçabilité des matières les plus nobles",
+    "service": "Service Concierge Privé",
+    "serviceDesc": "Livraison sécurisée avec signature et retour gracieux"
+  },
+  "footer": {
+    "rights": "Tous droits réservés."
+  }
+}
