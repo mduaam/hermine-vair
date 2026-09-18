@@ -6,6 +6,21 @@
 -- ============================================================
 
 -- ------------------------------------------------------------
+-- 0. PRÉREQUIS DE SCHÉMA (Mandat Bilingue & Slugs)
+-- ------------------------------------------------------------
+-- Garantit la présence des colonnes bilingues créées par la Migration 007 :
+
+alter table public.discounts
+  add column if not exists description_fr text,
+  add column if not exists description_en text;
+
+alter table public.categories
+  add column if not exists slug_en text;
+
+alter table public.products
+  add column if not exists slug_en text;
+
+-- ------------------------------------------------------------
 -- 1. STAFF & RBAC INITIALIZATION (public.staff)
 -- ------------------------------------------------------------
 -- To grant the 'owner' role to your own Supabase user account:
