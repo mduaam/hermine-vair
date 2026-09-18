@@ -15,16 +15,16 @@ export default async function AdminCategoriesPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-border/40 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-1">
-            <FolderTree className="w-3.5 h-3.5 text-gold" />
+          <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-indigo-600 font-semibold mb-1">
+            <FolderTree className="w-3.5 h-3.5" />
             <span>Catalogue & Silos SEO</span>
           </div>
-          <h1 className="font-serif text-2xl lg:text-3xl text-primary font-normal tracking-wide">
+          <h1 className="font-sans font-bold text-2xl text-slate-900 tracking-tight">
             Catégories & Taxonomies
           </h1>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Arborescence des collections avec slugs bilingues stricts (FR / EN).
           </p>
         </div>

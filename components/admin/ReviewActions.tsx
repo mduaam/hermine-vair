@@ -52,13 +52,13 @@ export function ReviewActions({ reviewId, currentStatus, isFeatured }: ReviewAct
         type="button"
         onClick={() => handleAction(undefined, true)}
         title={isFeatured ? 'Retirer de la mise en avant' : 'Mettre en avant sur la boutique'}
-        className={`p-1.5 border transition-colors ${
+        className={`p-1.5 border rounded-sm transition-colors ${
           isFeatured
-            ? 'bg-gold/15 border-gold text-gold hover:bg-gold/25'
-            : 'border-border/60 text-muted-foreground hover:text-gold hover:border-gold/40'
+            ? 'bg-amber-50 border-amber-300 text-amber-600 hover:bg-amber-100'
+            : 'border-slate-200 text-slate-400 hover:text-amber-500 hover:border-amber-300 bg-white'
         }`}
       >
-        <Star className={`w-3.5 h-3.5 ${isFeatured ? 'fill-gold' : ''}`} />
+        <Star className={`w-3.5 h-3.5 ${isFeatured ? 'fill-amber-500' : ''}`} />
       </button>
 
       {/* Approve Button */}
@@ -67,7 +67,7 @@ export function ReviewActions({ reviewId, currentStatus, isFeatured }: ReviewAct
           type="button"
           onClick={() => handleAction('approved')}
           title="Approuver cet avis"
-          className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 transition-colors"
+          className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 rounded-sm transition-colors"
         >
           <Check className="w-3 h-3" />
           <span>Approuver</span>
@@ -80,7 +80,7 @@ export function ReviewActions({ reviewId, currentStatus, isFeatured }: ReviewAct
           type="button"
           onClick={() => handleAction('rejected')}
           title="Rejeter cet avis"
-          className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-medium text-destructive bg-destructive/10 border border-destructive/30 hover:bg-destructive/20 transition-colors"
+          className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-medium text-rose-700 bg-rose-50 border border-rose-200 hover:bg-rose-100 rounded-sm transition-colors"
         >
           <X className="w-3 h-3" />
           <span>Rejeter</span>

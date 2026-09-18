@@ -13,7 +13,7 @@ export default async function AdminProductEditPage({ params }: ProductEditPagePr
   const { id } = await params;
   const categories = await getAdminCategoriesList();
 
-  let product: any = null;
+  let product: unknown = null;
 
   try {
     const supabase = createAdminClient();

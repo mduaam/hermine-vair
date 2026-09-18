@@ -29,18 +29,18 @@ export default function AdminSettingsPage() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-border/40 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 pb-5">
         <div>
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-1">
-            <Settings className="w-3.5 h-3.5 text-gold" />
+          <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-500 mb-1 font-semibold">
+            <Settings className="w-3.5 h-3.5 text-indigo-600" />
             <span>Configuration & Gouvernance</span>
           </div>
-          <h1 className="font-serif text-2xl lg:text-3xl text-primary font-normal tracking-wide">
+          <h1 className="font-sans font-semibold text-xl text-slate-900 tracking-tight">
             Paramètres de la Maison
           </h1>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Contrôle d’accès, conformité internationale et traçabilité des opérations.
           </p>
         </div>
@@ -54,21 +54,21 @@ export default function AdminSettingsPage() {
             <Link
               key={sec.title}
               href={sec.href}
-              className="bg-surface border border-border/60 p-6 shadow-sm flex flex-col justify-between hover:border-gold/50 transition-colors group"
+              className="bg-white border border-slate-200 rounded-lg p-6 shadow-xs flex flex-col justify-between hover:border-indigo-400 hover:shadow-sm transition-all group"
             >
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-sm bg-primary/5 border border-primary/10 flex items-center justify-center text-gold group-hover:bg-gold/10 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="font-serif text-base text-primary font-medium tracking-wide">
+                <h3 className="font-sans font-semibold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
                   {sec.title}
                 </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   {sec.desc}
                 </p>
               </div>
 
-              <div className="pt-6 mt-4 border-t border-border/40 flex items-center justify-between text-xs text-primary font-medium group-hover:text-gold transition-colors">
+              <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-indigo-600 font-semibold group-hover:text-indigo-700 transition-colors">
                 <span>Accéder</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Globe, AlertTriangle, CheckCircle2, ShieldAlert, FileText } from 'lucide-react';
+import { ArrowLeft, Globe, AlertTriangle, CheckCircle2, ShieldAlert } from 'lucide-react';
 import { getAdminComplianceRules } from '@/lib/supabase/queries/admin';
 
 export const metadata = {
@@ -9,37 +9,48 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic';
 
+interface ComplianceRule {
+  id: string;
+  country_code: string;
+  fur_sales_allowed: boolean;
+  currency: string;
+  default_locale: string;
+  duties_note_fr?: string | null;
+  duties_note_en?: string | null;
+}
+
 export default async function AdminCompliancePage() {
-  const rules = await getAdminComplianceRules();
+  const rawRules = await getAdminComplianceRules();
+  const rules = rawRules as unknown as ComplianceRule[];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
       <div>
         <Link
           href="/admin/settings"
-          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground mb-4 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 mb-3 transition-colors font-medium"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Retour aux paramètres</span>
         </Link>
 
-        <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-1">
-          <Globe className="w-3.5 h-3.5 text-gold" />
+        <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-500 mb-1 font-semibold">
+          <Globe className="w-3.5 h-3.5 text-indigo-600" />
           <span>Législation & Territoires Internationaux</span>
         </div>
-        <h1 className="font-serif text-2xl lg:text-3xl text-primary font-normal tracking-wide">
+        <h1 className="font-sans font-semibold text-xl text-slate-900 tracking-tight">
           Règles Régionales & Vente de Fourrure
         </h1>
-        <p className="text-xs text-muted-foreground mt-1">
+        <p className="text-xs text-slate-500 mt-1">
           Contrôle des restrictions légales de vente de fourrure naturelle et obligations douanières.
         </p>
       </div>
 
       {/* Statutory Fur Sales Warning */}
-      <div className="p-5 bg-amber-500/10 border border-amber-500/30 text-xs space-y-2">
-        <div className="font-medium text-amber-900 flex items-center gap-2">
-          <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0" />
+      <div className="p-4 bg-amber-50/70 border border-amber-200 rounded-lg text-xs space-y-1.5">
+        <div className="font-semibold text-amber-900 flex items-center gap-2">
+          <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
           <span>Exigence Légale Impérative (Non-Négociable) :</span>
         </div>
         <p className="text-amber-800 leading-relaxed font-sans">
@@ -49,9 +60,9 @@ export default async function AdminCompliancePage() {
       </div>
 
       {/* Rules Table */}
-      <div className="bg-surface border border-border/60 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-border/40 bg-muted/10 flex items-center justify-between">
-          <h2 className="font-serif text-sm font-medium text-primary tracking-wide">
+      <div className="bg-white border border-slate-200 rounded-lg shadow-xs overflow-hidden">
+        <div className="p-4 border-b border-slate-200 bg-slate-50/70 flex items-center justify-between">
+          <h2 className="font-sans font-semibold text-xs text-slate-900 uppercase tracking-wider">
             Territoires Paramétrés ({rules.length})
           </h2>
         </div>
@@ -59,44 +70,44 @@ export default async function AdminCompliancePage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="border-b border-border/60 bg-muted/20 text-muted-foreground uppercase tracking-widest text-[10px]">
-                <th className="py-3.5 px-4 font-normal">Pays / Code</th>
-                <th className="py-3.5 px-4 font-normal">Vente de Fourrure</th>
-                <th className="py-3.5 px-4 font-normal">Devise</th>
-                <th className="py-3.5 px-4 font-normal">Langue</th>
-                <th className="py-3.5 px-4 font-normal">Mention Douanière (FR)</th>
-                <th className="py-3.5 px-4 font-normal">Customs Note (EN)</th>
+              <tr className="border-b border-slate-200 bg-slate-50/80 text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
+                <th className="py-3 px-4">Pays / Code</th>
+                <th className="py-3 px-4">Vente de Fourrure</th>
+                <th className="py-3 px-4">Devise</th>
+                <th className="py-3 px-4">Langue</th>
+                <th className="py-3 px-4">Mention Douanière (FR)</th>
+                <th className="py-3 px-4">Customs Note (EN)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border/40 font-mono text-[11px]">
-              {rules.map((rule: any) => (
-                <tr key={rule.id} className="hover:bg-muted/10 transition-colors">
-                  <td className="py-3.5 px-4 font-sans font-medium text-foreground">
-                    <span className="font-mono bg-muted/50 border border-border/60 px-2 py-0.5 text-xs font-semibold mr-2">
+            <tbody className="divide-y divide-slate-100 font-mono text-[11px]">
+              {rules.map((rule) => (
+                <tr key={rule.id} className="hover:bg-slate-50/70 transition-colors">
+                  <td className="py-3 px-4 font-sans font-medium text-slate-900">
+                    <span className="font-mono bg-slate-100 border border-slate-300 px-2 py-0.5 text-xs font-semibold rounded text-slate-800">
                       {rule.country_code}
                     </span>
                   </td>
-                  <td className="py-3.5 px-4 font-sans">
+                  <td className="py-3 px-4 font-sans">
                     {rule.fur_sales_allowed ? (
-                      <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-300 px-2 py-0.5">
-                        <CheckCircle2 className="w-3 h-3" /> Autorisée
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" /> Autorisée
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 text-[10px] font-medium text-destructive bg-destructive/10 border border-destructive/30 px-2 py-0.5">
-                        <ShieldAlert className="w-3 h-3" /> Interdiction Légale
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded">
+                        <ShieldAlert className="w-3 h-3 text-rose-600" /> Interdiction Légale
                       </span>
                     )}
                   </td>
-                  <td className="py-3.5 px-4 font-sans font-medium text-foreground">
+                  <td className="py-3 px-4 font-sans font-medium text-slate-900">
                     {rule.currency}
                   </td>
-                  <td className="py-3.5 px-4 font-sans uppercase text-muted-foreground">
+                  <td className="py-3 px-4 font-sans uppercase text-slate-500">
                     {rule.default_locale}
                   </td>
-                  <td className="py-3.5 px-4 font-sans text-muted-foreground">
+                  <td className="py-3 px-4 font-sans text-slate-600">
                     {rule.duties_note_fr || '—'}
                   </td>
-                  <td className="py-3.5 px-4 font-sans text-muted-foreground">
+                  <td className="py-3 px-4 font-sans text-slate-600">
                     {rule.duties_note_en || '—'}
                   </td>
                 </tr>

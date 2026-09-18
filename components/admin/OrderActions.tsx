@@ -39,8 +39,8 @@ export function OrderActions({ orderId, currentStatus }: OrderActionsProps) {
       }
 
       router.refresh();
-    } catch (err: any) {
-      setError(err.message || 'Erreur réseau.');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Erreur réseau.');
     } finally {
       setLoading(false);
     }
@@ -48,13 +48,13 @@ export function OrderActions({ orderId, currentStatus }: OrderActionsProps) {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center gap-2.5">
         {currentStatus === 'paid' && (
           <button
             type="button"
             disabled={loading}
             onClick={() => handleStatusChange('fulfilled')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white text-xs uppercase tracking-wider font-medium hover:bg-blue-500 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-3.5 py-2 bg-blue-600 text-white text-xs font-semibold rounded-md hover:bg-blue-700 transition-colors shadow-xs disabled:opacity-50"
           >
             {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <PackageCheck className="w-3.5 h-3.5" />}
             <span>Préparer la Pièce</span>
@@ -66,7 +66,7 @@ export function OrderActions({ orderId, currentStatus }: OrderActionsProps) {
             type="button"
             disabled={loading}
             onClick={() => handleStatusChange('shipped')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 text-white text-xs uppercase tracking-wider font-medium hover:bg-indigo-500 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-3.5 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-md hover:bg-indigo-700 transition-colors shadow-xs disabled:opacity-50"
           >
             {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Truck className="w-3.5 h-3.5" />}
             <span>Confier au Transporteur</span>
@@ -78,7 +78,7 @@ export function OrderActions({ orderId, currentStatus }: OrderActionsProps) {
             type="button"
             disabled={loading}
             onClick={() => handleStatusChange('delivered')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 text-white text-xs uppercase tracking-wider font-medium hover:bg-emerald-500 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-3.5 py-2 bg-emerald-600 text-white text-xs font-semibold rounded-md hover:bg-emerald-700 transition-colors shadow-xs disabled:opacity-50"
           >
             {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />}
             <span>Confirmer la Livraison</span>
@@ -90,7 +90,7 @@ export function OrderActions({ orderId, currentStatus }: OrderActionsProps) {
             type="button"
             disabled={loading}
             onClick={() => handleStatusChange('refunded')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-surface border border-rose-500/40 text-rose-400 text-xs uppercase tracking-wider font-medium hover:bg-rose-950/40 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-3.5 py-2 bg-white border border-rose-300 text-rose-700 text-xs font-semibold rounded-md hover:bg-rose-50 transition-colors shadow-xs disabled:opacity-50"
           >
             {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RotateCcw className="w-3.5 h-3.5" />}
             <span>Rembourser</span>
@@ -99,7 +99,7 @@ export function OrderActions({ orderId, currentStatus }: OrderActionsProps) {
       </div>
 
       {error && (
-        <div className="p-3 bg-rose-950/60 border border-rose-500/40 text-rose-300 text-xs">
+        <div className="p-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs rounded-md">
           {error}
         </div>
       )}

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { getCurrentStaff } from '@/lib/admin/auth';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 import { AdminHeader } from '@/components/admin/AdminHeader';
-import { playfair, inter } from '@/lib/fonts';
+import { inter } from '@/lib/fonts';
 import '@/app/globals.css';
 
 export const metadata: Metadata = {
@@ -22,8 +22,8 @@ export default async function AdminLayout({
   const session = await getCurrentStaff();
 
   return (
-    <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-[#080808] text-primary font-sans antialiased">
+    <html lang="fr" className={inter.variable}>
+      <body className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased">
         <div className="min-h-screen flex">
           {/* Fixed Sidebar */}
           <AdminSidebar currentRole={session.effectiveRole} />

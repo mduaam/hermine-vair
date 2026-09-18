@@ -13,18 +13,18 @@ export default async function AdminAuditPage() {
   const logs = await getAdminAuditLogsList();
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-border/40 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 pb-5">
         <div>
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-1">
-            <Shield className="w-3.5 h-3.5 text-gold" />
+          <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-500 mb-1 font-semibold">
+            <Shield className="w-3.5 h-3.5 text-indigo-600" />
             <span>Sécurité & Traçabilité Immuable</span>
           </div>
-          <h1 className="font-serif text-2xl lg:text-3xl text-primary font-normal tracking-wide">
+          <h1 className="font-sans font-semibold text-xl text-slate-900 tracking-tight">
             Journal d’Audit
           </h1>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Registre d'audit horodaté consignant chaque mutation de données et changements d'états (Table public.audit_log).
           </p>
         </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { BookOpen, ExternalLink, Sparkles, FileText, Image as ImageIcon, Compass } from 'lucide-react';
 
 export const metadata = {
@@ -39,18 +38,18 @@ export default function AdminContentPage() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-border/40 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 pb-5">
         <div>
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-1">
-            <Sparkles className="w-3.5 h-3.5 text-gold" />
+          <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-slate-500 mb-1 font-semibold">
+            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
             <span>Gestion de Contenu Éditorial</span>
           </div>
-          <h1 className="font-serif text-2xl lg:text-3xl text-primary font-normal tracking-wide">
+          <h1 className="font-sans font-semibold text-xl text-slate-900 tracking-tight">
             Sanity Studio & Éditoriaux
           </h1>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Création et publication des récits, pages institutionnelles et campagnes de la Maison.
           </p>
         </div>
@@ -59,7 +58,7 @@ export default function AdminContentPage() {
           href="/studio"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-background text-xs uppercase tracking-widest font-medium hover:bg-gold hover:text-primary transition-colors self-start sm:self-auto shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-md hover:bg-indigo-700 transition-colors self-start sm:self-auto shadow-xs"
         >
           <span>Accéder au Studio Sanity</span>
           <ExternalLink className="w-3.5 h-3.5" />
@@ -67,14 +66,14 @@ export default function AdminContentPage() {
       </div>
 
       {/* Strict Architecture Separation Note */}
-      <div className="p-5 bg-muted/20 border border-border/60 text-xs space-y-2">
-        <div className="font-medium text-foreground flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-gold inline-block"></span>
+      <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs space-y-1.5">
+        <div className="font-semibold text-slate-900 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span>
           <span>Règle d'Architecture Fondamentale (Séparation des Données) :</span>
         </div>
-        <p className="text-muted-foreground leading-relaxed">
-          <strong className="text-foreground">Sanity CMS</strong> est l'unique source de vérité pour le contenu éditorial (Journal, Pages de marque, Lookbooks).
-          Le commerce (produits, prix en euros, stocks physiques, commandes clients et RLS) est géré exclusivement par <strong className="text-foreground">Supabase</strong>.
+        <p className="text-slate-600 leading-relaxed">
+          <strong className="text-slate-900">Sanity CMS</strong> est l'unique source de vérité pour le contenu éditorial (Journal, Pages de marque, Lookbooks).
+          Le commerce (produits, prix en euros, stocks physiques, commandes clients et RLS) est géré exclusivement par <strong className="text-slate-900">Supabase</strong>.
           Aucun prix ni niveau de stock ne doit transiter par Sanity.
         </p>
       </div>
@@ -86,29 +85,29 @@ export default function AdminContentPage() {
           return (
             <div
               key={sec.title}
-              className="bg-surface border border-border/60 p-6 shadow-sm flex flex-col justify-between hover:border-gold/50 transition-colors"
+              className="bg-white border border-slate-200 rounded-lg p-5 shadow-xs flex flex-col justify-between hover:border-indigo-300 hover:shadow-sm transition-all"
             >
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-sm bg-primary/5 border border-primary/10 flex items-center justify-center text-gold">
+                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="font-serif text-base text-primary font-medium tracking-wide">
+                <h3 className="font-sans font-semibold text-sm text-slate-900">
                   {sec.title}
                 </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   {sec.desc}
                 </p>
               </div>
 
-              <div className="pt-6 mt-4 border-t border-border/40 flex items-center justify-between text-xs">
-                <span className="font-mono text-[11px] text-muted-foreground bg-muted/30 px-2 py-0.5 border border-border/40">
+              <div className="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span className="font-mono text-[11px] font-medium text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
                   {sec.count}
                 </span>
                 <a
                   href={`/studio/structure/${sec.sanitySchema}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-gold transition-colors font-medium"
+                  className="inline-flex items-center gap-1.5 text-xs text-indigo-600 hover:text-indigo-800 transition-colors font-semibold"
                 >
                   <span>Éditer dans Sanity</span>
                   <ExternalLink className="w-3 h-3" />

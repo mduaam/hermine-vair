@@ -10,37 +10,37 @@ interface StatusBadgeProps {
 export function StatusBadge({ type, value, status, role }: StatusBadgeProps) {
   const actualValue = value ?? status ?? role ?? '';
   let label = actualValue;
-  let bgClass = 'bg-surface border-border text-muted';
+  let bgClass = 'bg-slate-100 border-slate-200 text-slate-700';
 
   if (type === 'order') {
     switch (actualValue) {
       case 'paid':
-        label = 'Payée';
-        bgClass = 'bg-emerald-950/40 border-emerald-500/40 text-emerald-400';
+        label = 'Payee';
+        bgClass = 'bg-emerald-50 border-emerald-200 text-emerald-700';
         break;
       case 'fulfilled':
-        label = 'Préparée';
-        bgClass = 'bg-blue-950/40 border-blue-500/40 text-blue-400';
+        label = 'Preparee';
+        bgClass = 'bg-sky-50 border-sky-200 text-sky-700';
         break;
       case 'shipped':
-        label = 'Expédiée';
-        bgClass = 'bg-indigo-950/40 border-indigo-500/40 text-indigo-400';
+        label = 'Expediee';
+        bgClass = 'bg-indigo-50 border-indigo-200 text-indigo-700';
         break;
       case 'delivered':
-        label = 'Livrée';
-        bgClass = 'bg-emerald-900/60 border-emerald-400 text-emerald-300';
+        label = 'Livree';
+        bgClass = 'bg-emerald-100 border-emerald-300 text-emerald-800';
         break;
       case 'pending':
         label = 'En attente';
-        bgClass = 'bg-amber-950/40 border-amber-500/40 text-amber-400';
+        bgClass = 'bg-amber-50 border-amber-200 text-amber-700';
         break;
       case 'refunded':
-        label = 'Remboursée';
-        bgClass = 'bg-rose-950/40 border-rose-500/40 text-rose-400';
+        label = 'Remboursee';
+        bgClass = 'bg-rose-50 border-rose-200 text-rose-700';
         break;
       case 'cancelled':
-        label = 'Annulée';
-        bgClass = 'bg-zinc-800 border-zinc-700 text-zinc-400';
+        label = 'Annulee';
+        bgClass = 'bg-rose-50 border-rose-200 text-rose-700';
         break;
       default:
         break;
@@ -49,59 +49,59 @@ export function StatusBadge({ type, value, status, role }: StatusBadgeProps) {
     const qty = parseInt(actualValue, 10);
     if (isNaN(qty) || qty <= 0) {
       label = 'Rupture';
-      bgClass = 'bg-rose-950/40 border-rose-500/40 text-rose-400';
+      bgClass = 'bg-rose-50 border-rose-200 text-rose-700';
     } else if (qty <= 2) {
-      label = `Stock Faible (${qty})`;
-      bgClass = 'bg-amber-950/40 border-amber-500/40 text-amber-400';
+      label = `Faible (${qty})`;
+      bgClass = 'bg-amber-50 border-amber-200 text-amber-700';
     } else {
       label = `En Stock (${qty})`;
-      bgClass = 'bg-emerald-950/40 border-emerald-500/40 text-emerald-400';
+      bgClass = 'bg-emerald-50 border-emerald-200 text-emerald-700';
     }
   } else if (type === 'review') {
-    switch (value) {
+    switch (actualValue) {
       case 'approved':
-        label = 'Approuvé';
-        bgClass = 'bg-emerald-950/40 border-emerald-500/40 text-emerald-400';
+        label = 'Approuve';
+        bgClass = 'bg-emerald-50 border-emerald-200 text-emerald-700';
         break;
       case 'rejected':
-        label = 'Rejeté';
-        bgClass = 'bg-rose-950/40 border-rose-500/40 text-rose-400';
+        label = 'Rejete';
+        bgClass = 'bg-rose-50 border-rose-200 text-rose-700';
         break;
       case 'featured':
         label = 'En Vedette';
-        bgClass = 'bg-gold/20 border-gold text-gold font-medium';
+        bgClass = 'bg-indigo-50 border-indigo-200 text-indigo-700 font-medium';
         break;
       case 'pending':
       default:
-        label = 'À Modérer';
-        bgClass = 'bg-amber-950/40 border-amber-500/40 text-amber-400';
+        label = 'A Moderer';
+        bgClass = 'bg-amber-50 border-amber-200 text-amber-700';
         break;
     }
   } else if (type === 'role') {
-    switch (value) {
+    switch (actualValue) {
       case 'owner':
-        label = 'Propriétaire';
-        bgClass = 'bg-gold/20 border-gold text-gold font-medium';
+        label = 'Proprietaire';
+        bgClass = 'bg-amber-50 border-amber-300 text-amber-800 font-semibold';
         break;
       case 'admin':
         label = 'Administrateur';
-        bgClass = 'bg-purple-950/40 border-purple-500/40 text-purple-300';
+        bgClass = 'bg-purple-50 border-purple-200 text-purple-700';
         break;
       case 'product_specialist':
-        label = 'Spécialiste Produit';
-        bgClass = 'bg-blue-950/40 border-blue-500/40 text-blue-300';
+        label = 'Spec. Produit';
+        bgClass = 'bg-sky-50 border-sky-200 text-sky-700';
         break;
       case 'order_manager':
-        label = 'Responsable Commandes';
-        bgClass = 'bg-cyan-950/40 border-cyan-500/40 text-cyan-300';
+        label = 'Resp. Commandes';
+        bgClass = 'bg-cyan-50 border-cyan-200 text-cyan-700';
         break;
       case 'content_editor':
-        label = 'Éditeur Contenu';
-        bgClass = 'bg-emerald-950/40 border-emerald-500/40 text-emerald-300';
+        label = 'Editeur Contenu';
+        bgClass = 'bg-emerald-50 border-emerald-200 text-emerald-700';
         break;
       case 'support_agent':
-        label = 'Agent Conciergerie';
-        bgClass = 'bg-zinc-800 border-zinc-600 text-zinc-300';
+        label = 'Conciergerie';
+        bgClass = 'bg-slate-100 border-slate-200 text-slate-700';
         break;
       default:
         break;
@@ -110,7 +110,7 @@ export function StatusBadge({ type, value, status, role }: StatusBadgeProps) {
 
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs tracking-wider uppercase border ${bgClass}`}
+      className={`inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] tabular-nums tracking-wide uppercase border font-medium ${bgClass}`}
     >
       {label}
     </span>
